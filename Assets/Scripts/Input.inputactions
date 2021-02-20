@@ -1,0 +1,91 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "Ground",
+            "id": "8efd30ef-9b26-477f-9237-8164432fb972",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "31edebd4-c6d7-42ee-996d-2a9db31ade58",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "bf2bbeb6-d78d-4f84-8599-8e49d25b1b02",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "51bcea2a-8591-419b-8e02-9ef9eec6bb51",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyobard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "05a6bc50-ee6e-4a6b-be72-8fe4cd952035",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "b1626408-b60d-4a09-8005-7097c59b580c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyobard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a6324eab-320c-4563-8382-41dfc03a313c",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyobard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d2466411-1f50-42a7-85e7-84d25ee01324",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyobard",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyobard",
+            "bindingGroup": "Keyobard",
+            "devices": []
+        }
+    ]
+}
