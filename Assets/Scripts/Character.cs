@@ -34,10 +34,12 @@ public class Character : CharacterController
     float fallmultiplier;
 
 
-    [SerializeField]
     float incremental;
 
+    float escalar;
 
+    [SerializeField]
+    Animator anim;
     void Start()
     {
 
@@ -52,7 +54,8 @@ public class Character : CharacterController
     // Update is called once per frame
     void Update()
     {
-
+        transform.position = new Vector3(transform.position.x,transform.position.y,0);
+        
         if(input.Ground.Jump.triggered)
         {
             jumpTimer = Time.time + jumpDelay;
@@ -73,7 +76,9 @@ public class Character : CharacterController
         }
 
         incremental = Mathf.Clamp(incremental,0.0f,speed);
-     
+
+        escalar = incremental / speed;
+        anim.SetFloat("moveX",escalar);
     }
 
     void FixedUpdate() 

@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class CharacterController : MonoBehaviour
 {
-   protected Animator anim;
    protected Rigidbody2D rb;
 
    protected Input input;
@@ -25,7 +24,6 @@ public class CharacterController : MonoBehaviour
 
        protected void Awake() {
         input = new Input();
-        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -77,7 +75,7 @@ public class CharacterController : MonoBehaviour
         
 
         
-        rotate += horizontal * 16;
+        rotate += horizontal * 22;
 
 
 
