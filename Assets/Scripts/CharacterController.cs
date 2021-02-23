@@ -14,6 +14,9 @@ public class CharacterController : MonoBehaviour
    [SerializeField]
    protected ContactFilter2D ground;
 
+   [SerializeField]
+   protected float life;
+
 
     float rotate;
 

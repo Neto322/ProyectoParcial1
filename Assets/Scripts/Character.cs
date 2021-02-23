@@ -41,10 +41,16 @@ public class Character : CharacterController
     [SerializeField]
     Animator anim;
 
+    [SerializeField]
+    GameObject chems;
+
     float horizontal;
+
+    [SerializeField]
+    float score;
     void Start()
     {
-
+       
 
     }
 
@@ -82,6 +88,18 @@ public class Character : CharacterController
 
         escalar = incremental / speed;
         anim.SetFloat("moveX",escalar);
+
+        anim.SetFloat("velocityY", rb.velocity.y);
+
+        if(rb.IsTouching(ground))
+        {
+            anim.SetBool("jump", false);
+        }
+        else{
+            anim.SetBool("jump", true);
+
+        }         
+
     }
 
     void FixedUpdate() 
@@ -97,13 +115,49 @@ public class Character : CharacterController
             Saltar(jumpforce,jumpTimer);
 
         }
+
+        if(life <= 0)
+        {
+            Instantiate(chems, transform.position,Quaternion.identity);
+            Destroy(gameObject);
+
+        }
     }
 
     bool Moving => Mathf.Abs(horizontal) > 0;
 
   
 
-   
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "Enemy")
+        {
+            life -= 1;
+
+        }
+
+        if(other.tag == "Coin")
+        {
+        
+
+            score += other.gameObject.GetComponent<coin>().puntos;
+            other.gameObject.GetComponent<coin>().Consume();
+
+            
+        }
+
+
+        
+        if(other.tag == "Soda")
+        {
+        
+
+           Debug.Log("Sodinski" + other.gameObject.GetComponent<coin>().puntos);
+            other.gameObject.GetComponent<coin>().Consume();
+
+            
+        }
+
+    }
 
 
     }
