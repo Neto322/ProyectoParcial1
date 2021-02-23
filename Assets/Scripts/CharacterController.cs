@@ -14,7 +14,6 @@ public class CharacterController : MonoBehaviour
    [SerializeField]
    protected ContactFilter2D ground;
 
-    float horizontal;
 
     float rotate;
 
@@ -68,9 +67,8 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    protected void Rotate()
+    protected void Rotate(float horizontal)
     {
-        horizontal = input.Ground.Move.ReadValue<float>();
 
         
 
@@ -96,7 +94,7 @@ public class CharacterController : MonoBehaviour
        
 
     }
-     protected  bool Moving => Mathf.Abs(horizontal) > 0;
+   
 
 
 }

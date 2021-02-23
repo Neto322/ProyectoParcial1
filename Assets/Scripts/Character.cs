@@ -40,6 +40,8 @@ public class Character : CharacterController
 
     [SerializeField]
     Animator anim;
+
+    float horizontal;
     void Start()
     {
 
@@ -61,7 +63,8 @@ public class Character : CharacterController
             jumpTimer = Time.time + jumpDelay;
         }
 
-     
+        horizontal = input.Ground.Move.ReadValue<float>();
+
 
         if(Moving)
         {
@@ -87,7 +90,7 @@ public class Character : CharacterController
 
         CalculatePhysics(gravity , fallmultiplier);
 
-        Rotate();
+        Rotate(horizontal);
 
         if(jumpTimer > Time.time &&  rb.IsTouching(ground))
         {
@@ -96,7 +99,7 @@ public class Character : CharacterController
         }
     }
 
-
+    bool Moving => Mathf.Abs(horizontal) > 0;
 
   
 
