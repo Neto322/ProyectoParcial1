@@ -13,7 +13,7 @@ public class Character : CharacterController
 {
    
 
-
+   
 
 
     [SerializeField]
@@ -148,10 +148,10 @@ public class Character : CharacterController
 
         if(life <= 0)
         {
-            Instantiate(chems, transform.position,Quaternion.identity);
-            Destroy(gameObject);
+                     SceneManager.LoadScene(0);
 
-            SceneManager.LoadScene(1);
+            
+           
 
         }
 
@@ -205,6 +205,7 @@ public class Character : CharacterController
   if(other.tag == "Sol")
   {
       Debug.Log("Muerte" + life);
+
     life = -1;
 
   }
@@ -230,6 +231,7 @@ public class Character : CharacterController
         }
 
     }
+
 
 
     }
