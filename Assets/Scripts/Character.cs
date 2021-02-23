@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 using TMPro;
 
+using UnityEngine.SceneManagement;
+
 
 public class Character : CharacterController
 {
@@ -60,6 +62,13 @@ public class Character : CharacterController
 
     [SerializeField]
     TextMeshProUGUI text2;
+
+    [SerializeField]
+    AudioClip[] sonidos;
+
+    AudioSource sound;
+
+
     void Start()
     {
        
@@ -69,6 +78,7 @@ public class Character : CharacterController
 
         text.text = "Puntos:" + "<color=#39a015>" + score + "</color>";
 
+        sound = GetComponent<AudioSource>();
 
 
     }
@@ -94,6 +104,7 @@ public class Character : CharacterController
         if(Moving)
         {
             incremental += aceleration * Time.deltaTime;
+         
         }
 
         else{
@@ -140,6 +151,8 @@ public class Character : CharacterController
             Instantiate(chems, transform.position,Quaternion.identity);
             Destroy(gameObject);
 
+            SceneManager.LoadScene(1);
+
         }
 
         text.text = "Puntos:" + "<color=#39a015>" + score + "</color>";
@@ -162,8 +175,11 @@ public class Character : CharacterController
         {
             life -= 1;
            
-
+            if(life != 0)
             Destroy(other.gameObject);
+
+            sound.clip = sonidos[1];
+            sound.Play();
 
 
         }
@@ -178,13 +194,20 @@ public class Character : CharacterController
 
 
           
-
+            sound.clip = sonidos[2];
+            sound.Play();
             
 
 
             
         }
 
+  if(other.tag == "Sol")
+  {
+      Debug.Log("Muerte" + life);
+    life = -1;
+
+  }
 
         
         if(other.tag == "Soda")
@@ -195,7 +218,8 @@ public class Character : CharacterController
         
             other.gameObject.GetComponent<coin>().Consume();
 
-
+            sound.clip = sonidos[0];
+            sound.Play();
           
            
 
