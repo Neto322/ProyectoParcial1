@@ -76,7 +76,7 @@ public class CharacterController : MonoBehaviour
         
 
         
-        rotate += horizontal * 22;
+        rotate += horizontal * 35;
 
 
 

@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
+using TMPro;
+
+
 public class Character : CharacterController
 {
    
@@ -48,9 +53,23 @@ public class Character : CharacterController
 
     [SerializeField]
     float score;
+
+
+    [SerializeField]
+    TextMeshProUGUI text;
+
+    [SerializeField]
+    TextMeshProUGUI text2;
     void Start()
     {
        
+        life = 3;
+
+        text2.text = "Vida:" + "<color=#ff0000>" + life + "</color>";
+
+        text.text = "Puntos:" + "<color=#39a015>" + score + "</color>";
+
+
 
     }
 
@@ -122,6 +141,14 @@ public class Character : CharacterController
             Destroy(gameObject);
 
         }
+
+        text.text = "Puntos:" + "<color=#39a015>" + score + "</color>";
+
+        text2.text = "Vida:" + "<color=#ff0000>" + life + "</color>";
+
+        
+
+
     }
 
     bool Moving => Mathf.Abs(horizontal) > 0;
@@ -129,18 +156,31 @@ public class Character : CharacterController
   
 
     private void OnTriggerEnter2D(Collider2D other) {
+
+
         if(other.tag == "Enemy")
         {
             life -= 1;
+           
+
+            Destroy(other.gameObject);
+
 
         }
 
         if(other.tag == "Coin")
         {
-        
 
-            score += other.gameObject.GetComponent<coin>().puntos;
+            score = score + other.gameObject.GetComponent<coin>().puntos; 
+
+           
             other.gameObject.GetComponent<coin>().Consume();
+
+
+          
+
+            
+
 
             
         }
@@ -149,10 +189,18 @@ public class Character : CharacterController
         
         if(other.tag == "Soda")
         {
-        
 
-           Debug.Log("Sodinski" + other.gameObject.GetComponent<coin>().puntos);
+            life +=  other.gameObject.GetComponent<coin>().puntos; 
+
+        
             other.gameObject.GetComponent<coin>().Consume();
+
+
+          
+           
+
+   
+
 
             
         }

@@ -9,9 +9,15 @@ public class coin : MonoBehaviour
 
     public float puntos;
 
+     void Start() {
+         puntos = item.points;
+    }
     public void Consume()
     {
-        puntos = item.points;
         Destroy(gameObject);
+
+
+        
+      
     }
 }

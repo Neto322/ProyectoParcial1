@@ -71,7 +71,6 @@ public class Enemy : CharacterController
             moveTimer += Time.time * Time.deltaTime;
         }
 
-        Debug.Log(turntime);
     }
 
     void FixedUpdate() 
